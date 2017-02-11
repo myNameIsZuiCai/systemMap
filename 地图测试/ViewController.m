@@ -17,6 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    _mgr = [[CLLocationManager alloc] init];
+    if([_mgr respondsToSelector:@selector(requestAlwaysAuthorization)]){
+        [_mgr requestAlwaysAuthorization];
+    }
+    mapView.delegate=self;
+    mapView.mapType=MKMapTypeStandard;
+    mapView.userTrackingMode=MKUserTrackingModeFollow;
 }
 
 - (void)didReceiveMemoryWarning {
